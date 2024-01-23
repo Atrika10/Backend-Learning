@@ -1,0 +1,10 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: rgb(182, 182, 245);
+}
+img{
+    width: 200px;
+    height: auto;
+}

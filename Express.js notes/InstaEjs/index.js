@@ -2,6 +2,9 @@ const express = require("express");
 const app = express();
 const path = require("path");
 
+
+app.use(express.static("public")); // To serve static files, we use this
+
 // ejs working
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "/views"));
