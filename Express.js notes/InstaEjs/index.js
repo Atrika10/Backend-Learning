@@ -3,7 +3,9 @@ const app = express();
 const path = require("path");
 
 
-app.use(express.static("public")); // To serve static files, we use this
+// app.use(express.static("public")); // To serve static files, we use this
+// If we write Above line , we can't run this server ( with those files which is in public folder) from any directory, that's why we should write below line to run without any error
+app.use(express.static(path.join(__dirname, "public")));
 
 // ejs working
 app.set("view engine", "ejs");
