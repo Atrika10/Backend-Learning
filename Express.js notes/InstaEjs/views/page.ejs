@@ -4,8 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        img{
+            width: 200px;
+            height: auto;
+        }
+    </style>
 </head>
 <body>
-    <h2>This is <%= username %> insta page</h2>
+    <!-- extracting details of data  & using it -->
+    <h2>This is @<%= data.name %> page</h2>
+    <h2>followers <%= data.followers %>  &nbsp; &nbsp;
+    following <%= data.following %> </h2>
+
+
+    <!-- show images -->
+    <%  for(let post of data.posts){  %>
+        <img src="<%= post.image %>" alt="">
+        <p>  <%= post.likes  %> </p>
+        <p>  <%= post.comments  %> </p>
+     <% }  %>
 </body>
 </html>
