@@ -136,3 +136,19 @@ Step 3: Create an EJS template (index.ejs);
 ```
 * NOTE : Here we use `<% %>` ejs tag, this tags for control-flow, it will not give any output.
 
+### More Tags Ref - https://ejs.co/
+
+
+<%_ ‘Whitespace Slurping’ Scriptlet tag, strips all whitespace before it
+
+<%- Outputs the unescaped value into the template
+
+<%# Comment tag, no execution, no output
+
+<%% Outputs a literal '<%'
+
+%> Plain ending tag
+
+-%> Trim-mode ('newline slurp') tag, trims following newline
+
+_%> ‘Whitespace Slurping’ ending tag, removes all whitespace after it
