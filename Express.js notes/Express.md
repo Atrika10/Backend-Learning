@@ -123,3 +123,16 @@ Step 3: Create an EJS template (index.ejs);
 </body>
 </html>
 ```
+* Some Example of using EJS
+# Tag for Conditional Statement / Loop in EJS
+
+```
+<% if(age >= 18){ %>
+        <p>You are adult</p>
+        <% }else { %>
+        <p>You are not adult</p>
+     <% } %>
+
+```
+* NOTE : Here we use `<% %>` ejs tag, this tags for control-flow, it will not give any output.
+
