@@ -54,7 +54,8 @@ app.post("/posts", (req, res) =>{      // 2. Handeling data in post request
     // incoming data will be added in 'posts' array
     let { name, content} = req.body;
     posts.push({name, content});
-    res.send("post req working")
+    // res.send("post req working");  <- This line will not redirect to our main page
+    res.redirect("/posts");
 })
 
 app.listen(port, ()=>{
