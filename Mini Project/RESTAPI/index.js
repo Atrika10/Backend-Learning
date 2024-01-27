@@ -3,6 +3,7 @@ const app = express();
 const port = 3000;
 const path = require("path");
 const {v4 : uuidv4} = require('uuid');  // to generate unique id
+var methodOverride = require('method-override');
 
 // to understand incoming data
 app.use(express.urlencoded({extended : true}));
@@ -13,6 +14,9 @@ app.set("views", path.join(__dirname, "views"));
 
 // to serve static files
 app.use(express.static(path.join(__dirname, "public")));
+
+// to override http request
+app.use(methodOverride('_method'));
 
 // Dummy data
 let posts = [
@@ -70,6 +74,22 @@ app.get("/posts/:id", (req, res)=>{
     let {id}= req.params;       // store id
     let post = posts.find((p)=> id === p.id);
     res.render("eachPost.ejs", {post});
+})
+
+//4th Route -> Edit
+app.get("/posts/:id/edit",(req, res)=>{
+    let {id} = req.params;
+    let post = posts.find((p)=> id===p.id);
+    res.render("edit.ejs",{post});
+}) 
+
+// we will update content which is coming from edit.ejs page
+app.patch("/posts/:id", (req, res)=>{
+    let {id} = req.params;
+    let newContent = req.body.content;
+    let post = posts.find((p)=> id === p.id);
+    post.content = newContent;
+    res.redirect("/posts");
 })
 
 app.listen(port, ()=>{
