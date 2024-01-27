@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const port = 3000;
 const path = require("path");
+const {v4 : uuidv4} = require('uuid');  // to generate unique id
 
 // to understand incoming data
 app.use(express.urlencoded({extended : true}));
@@ -16,27 +17,27 @@ app.use(express.static(path.join(__dirname, "public")));
 // Dummy data
 let posts = [
     {
-        id : "1a",
+        id : uuidv4(),
         name: "John ",
         content: "Exploring the world of coding. #javascript #webdev"
     },
     {
-        id : "2b",
+        id : uuidv4(),
         name: "Alice Smith",
         content: "Cooking up some delicious recipes. #foodie"
     },
     {
-        id : "3c",
+        id : uuidv4(),
         name: "Bob Johnson",
         content: "Just finished reading a great book. #booklover"
     },
     {
-        id : "4d",
+        id : uuidv4(),
         name: "Eva Williams",
         content: "Traveling and documenting the journey. #travel"
     },
     {
-        id : "5e",
+        id : uuidv4(),
         name: "Mike Brown",
         content: "Learning a new language. #languagelearning"
     }
@@ -58,7 +59,8 @@ app.get("/posts/new", (req, res) =>{    // 1. Adding new post in this route
 app.post("/posts", (req, res) =>{      // 2. Handeling data in post request
     // incoming data will be added in 'posts' array
     let { name, content} = req.body;
-    posts.push({name, content});
+    let id = uuidv4();                  // create new id, while creating new post
+    posts.push({id, name, content});
     // res.send("post req working");  <- This line will not redirect to our main page
     res.redirect("/posts");
 })
@@ -67,7 +69,6 @@ app.post("/posts", (req, res) =>{      // 2. Handeling data in post request
 app.get("/posts/:id", (req, res)=>{
     let {id}= req.params;       // store id
     let post = posts.find((p)=> id === p.id);
-    console.log(post);
     res.render("eachPost.ejs", {post});
 })
 
