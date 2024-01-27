@@ -16,22 +16,27 @@ app.use(express.static(path.join(__dirname, "public")));
 // Dummy data
 let posts = [
     {
+        id : "1a",
         name: "John ",
         content: "Exploring the world of coding. #javascript #webdev"
     },
     {
+        id : "2b",
         name: "Alice Smith",
         content: "Cooking up some delicious recipes. #foodie"
     },
     {
+        id : "3c",
         name: "Bob Johnson",
         content: "Just finished reading a great book. #booklover"
     },
     {
+        id : "4d",
         name: "Eva Williams",
         content: "Traveling and documenting the journey. #travel"
     },
     {
+        id : "5e",
         name: "Mike Brown",
         content: "Learning a new language. #languagelearning"
     }
@@ -56,6 +61,14 @@ app.post("/posts", (req, res) =>{      // 2. Handeling data in post request
     posts.push({name, content});
     // res.send("post req working");  <- This line will not redirect to our main page
     res.redirect("/posts");
+})
+
+// 3rd Route -> Access Each Post in Detail
+app.get("/posts/:id", (req, res)=>{
+    let {id}= req.params;       // store id
+    let post = posts.find((p)=> id === p.id);
+    console.log(post);
+    res.render("eachPost.ejs", {post});
 })
 
 app.listen(port, ()=>{
