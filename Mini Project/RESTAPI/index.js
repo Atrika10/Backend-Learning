@@ -92,6 +92,14 @@ app.patch("/posts/:id", (req, res)=>{
     res.redirect("/posts");
 })
 
+// 5th Route -> Delete Post
+app.delete("/posts/:id", (req, res)=>{
+    let {id} = req.params;
+    posts = posts.filter((p)=> id !== p.id);
+    console.log(post);
+    res.redirect("/posts");
+})
+
 app.listen(port, ()=>{
     console.log(`App is listening on port ${port}`);
 })
