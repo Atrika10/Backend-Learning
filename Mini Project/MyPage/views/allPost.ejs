@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Post</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Your post</h2>
+    <div> 
+       <% for(post of posts){ %>
+            <div class="card">
+                <div class="postImg"><img src="<%= post.img %>" alt="postImage"></div>
+                <div class="captionDiv"><%= post.caption %> </div>
+                <div class="like">Like :<%= post.like %></div>
+            </div>
+       <% } %>
+        </div>
+</body>
+</html>
+
+
