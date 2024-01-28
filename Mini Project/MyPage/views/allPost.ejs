@@ -8,6 +8,12 @@
 </head>
 <body>
     <h2>Your post</h2>
+    <a href="http://localhost:8000/">Back</a>
+    <form action="/posts/new">
+        <h3>Create New Post : </h3> &nbsp;
+        <button class="btn">Create </button>
+    </form>
+
     <div> 
        <% for(post of posts){ %>
             <div class="card">

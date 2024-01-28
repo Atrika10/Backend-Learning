@@ -5,6 +5,17 @@
     background-color: rgb(20, 3, 48);
     color: white;
 }
+body{
+    margin: 2rem;
+}
 img{
     width: 200px;
+}
+.btn{
+    margin-bottom: 20px;
+}
+.form_add_newPost{
+    background-color: aqua;
+    display: flex;
+    flex-direction: column;
 }

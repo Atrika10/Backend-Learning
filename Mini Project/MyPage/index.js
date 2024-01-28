@@ -29,6 +29,13 @@ const posts = [
 const userName = "Atrika";
 const noOfPost = posts.length;
 
+// to parse data
+app.use(express.urlencoded({extended : true}));
+
+// set view engine
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
 // to server static file
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -42,6 +49,22 @@ app.get("/", (req, res) =>{
 app.get("/posts", (req, res)=>{
     res.render("allPost.ejs", {posts});
 });
+
+// 3rd Route -> to make a form for new post
+app.get("/posts/new", (req, res) =>{
+    res.render("newPost.ejs");
+})
+
+// handle post request to create new post & it will redirect to all post after updating new post
+app.post("/posts", (req, res) =>{
+    let {imageUrl,postCaption } = req.body;
+    img = imageUrl;             // as I've changed the name of the inputs; I've to set it to original name 
+    caption = postCaption;
+    let like =0;
+
+    posts.push({img,caption , like});
+    res.redirect("/posts");
+})
 
 app.listen(port, (req, res) =>{
     console.log(`App is listening on port ${port}`);
