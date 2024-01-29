@@ -18,6 +18,10 @@
        <% for(post of posts){ %>
             <div class="card">
                 <div class="postImg"><img src="<%= post.img %>" alt="postImage"></div>
+                
+                <form action="/posts/<%=post.id%>?_method=DELETE"  method="post">
+                    <button class="btn">Delete Post</button>
+                </form>
                 <div class="captionDiv"><%= post.caption %> </div>
                 <div class="like">Like :<%= post.like %></div>
             </div>

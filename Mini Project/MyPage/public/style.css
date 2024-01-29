@@ -13,6 +13,10 @@ img{
 }
 .btn{
     margin-bottom: 20px;
+    background-color: rgb(138, 92, 207);
+    padding: 5px;
+    border: 1px solid white;
+    border-radius: 5px;
 }
 .form_add_newPost{
     background-color: aqua;
